@@ -23,7 +23,7 @@
         <!-- Brand Section -->
         <div class="space-y-6 reveal-on-load flex flex-col max-md:items-center max-md:text-center">
           <!-- Logo with Glass Effect -->
-          <div class="inline-flex items-center gap-3 group">
+          <div class="cursor-pointer inline-flex items-center gap-3 group">
             <div class="relative">
               <div
                   class="absolute inset-0 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
@@ -34,7 +34,7 @@
             </div>
             <span
                 class="text-3xl font-bold bg-gradient-to-r from-white via-indigo-200 to-indigo-400 bg-clip-text text-transparent">
-              X-CODE
+              U-CODE
             </span>
           </div>
 
@@ -146,7 +146,7 @@
 
         <div class="relative flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
           <div class="flex items-center gap-2 max-md:text-center">
-            <span>&copy; 2026 X-Code Inc.</span>
+            <span>&copy; 2026 U-Code Inc.</span>
             <span class="hidden md:inline">•</span>
             <span>Barcha huquqlar himoyalangan.</span>
           </div>

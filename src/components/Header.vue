@@ -68,7 +68,7 @@ const data = [
         </div>
         <span
             class="text-2xl font-bold text-white tracking-wide group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-indigo-400 group-hover:to-purple-500 transition-all duration-300">
-          X-CODE
+          U-CODE
         </span>
       </a>
 
@@ -79,7 +79,7 @@ const data = [
             :key="index"
             :style="{ transitionDelay: `${index * 100 + 300}ms` }"
             :class="[
-              'relative text-sm font-medium text-gray-300 hover:text-white transition-all duration-300 py-2 group',
+              'cursor-pointer relative text-sm font-medium text-gray-300 hover:text-white transition-all duration-300 py-2 group',
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             ]"
         >
