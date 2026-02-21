@@ -143,7 +143,7 @@ const getGlowColor = (color) => {
         >
           <!-- Glass Card -->
           <div
-              class="relative h-full p-8 rounded-3xl bg-slate-900/30 backdrop-blur-xl border border-slate-800/50 hover:border-slate-700/50 transition-all duration-500 overflow-hidden">
+              class="relative h-full p-8 rounded-3xl bg-slate-900/30 backdrop-blur-[3px] border border-slate-800/50 hover:border-slate-700/50 transition-all duration-500 overflow-hidden">
             <!-- Hover Glow Effect -->
             <div
                 class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl"

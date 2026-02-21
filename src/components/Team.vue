@@ -164,7 +164,7 @@ const team = [
 
             <!-- Main Card -->
             <div
-                class="relative h-full rounded-3xl bg-slate-900/40 backdrop-blur-2xl border border-slate-800/50 group-hover:border-slate-700/50 overflow-hidden transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(99,102,241,0.2)]">
+                class="relative h-full rounded-3xl bg-slate-900/40 backdrop-blur-[2px] border border-slate-800/50 group-hover:border-slate-700/50 overflow-hidden transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(99,102,241,0.2)]">
               <!-- Animated Background Gradient -->
               <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                 <div
@@ -340,7 +340,7 @@ const team = [
         ]"
       >
         <div
-            class="relative inline-block p-8 rounded-3xl bg-slate-900/30 backdrop-blur-xl border border-slate-800/50 group hover:border-slate-700/50 transition-all duration-500">
+            class="relative inline-block p-8 rounded-3xl bg-slate-900/30 backdrop-blur-[3px] border border-slate-800/50 group hover:border-slate-700/50 transition-all duration-500">
           <!-- Outer Glow -->
           <div
               class="absolute -inset-0.5 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

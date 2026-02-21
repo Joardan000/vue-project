@@ -1,10 +1,33 @@
 <script setup>
 import {ref, onMounted, onUnmounted} from 'vue'
 import Btn from '../components/myBtn.vue'
+import { auth } from "../stores/auth.js";
+
+const signOut = auth()
 
 const isScrolled = ref(false)
 const isVisible = ref(false)
 const isMobileMenuOpen = ref(false)
+
+function scrollToMain(){
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function scrollToFeatures(){
+  window.scrollTo({top: 1450, behavior: 'smooth'})
+}
+
+function scrollToPortfolio(){
+  window.scrollTo({top: 2830, behavior: 'smooth'})
+}
+
+function scrollToTeam(){
+  window.scrollTo({top: 4620, behavior: 'smooth'})
+}
+
+function scrollToContact(){
+  window.scrollTo({top: 5620, behavior: 'smooth'})
+}
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 50
@@ -52,7 +75,7 @@ const data = [
         :class="[
         'container mx-auto flex justify-between items-center px-6 transition-all duration-500',
         isScrolled
-          ? 'bg-slate-900/40 backdrop-blur-2xl rounded-full border border-white/20 shadow-[0_8px_32px_rgba(139,92,246,0.15)] py-3 max-w-6xl'
+          ? 'bg-slate-900/40 backdrop-blur-[2px] shadow-[2px_1px_1px_gray] rounded-full border border-white/20 shadow-[0_8px_32px_rgba(139,92,246,0.15)] py-3 max-w-6xl'
           : 'bg-transparent max-w-7xl'
       ]"
     >
@@ -75,6 +98,7 @@ const data = [
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center gap-8">
         <a
+            @click="item.navbar === 'Bosh Sahifa' ? scrollToMain(): false; item.navbar === 'Xizmatlar' ? scrollToFeatures() : false ; item.navbar === 'Portfolio'? scrollToPortfolio(): false; item.navbar === 'Jamoa'? scrollToTeam() : false"
             v-for="(item, index) in data"
             :key="index"
             :style="{ transitionDelay: `${index * 100 + 300}ms` }"
@@ -91,13 +115,11 @@ const data = [
 
       <!-- Desktop Button -->
       <div class="hidden md:block">
-        <Btn
+        <Btn @click="signOut.signOut()"
             :class="['transition-all duration-1000 delay-700', isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-75']">
-          Bog'lanish
+          Sign Out
         </Btn>
       </div>
-
-      <!-- Mobile Menu Button -->
       <button @click="toggleMenu"
               class="md:hidden relative z-[60] flex flex-col justify-center items-center w-8 h-8 gap-1.5 focus:outline-none">
         <span
@@ -109,8 +131,6 @@ const data = [
       </button>
     </div>
   </header>
-
-  <!-- Premium Glass Sidebar -->
   <div
       :class="[
       'fixed inset-0 z-[55] md:hidden transition-all duration-500',
@@ -207,7 +227,3 @@ const data = [
     </div>
   </div>
 </template>
-
-<style scoped>
-/* Additional custom styles if needed */
-</style>

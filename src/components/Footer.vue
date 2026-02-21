@@ -1,5 +1,5 @@
 <template>
-  <footer class="relative bg-[#0B0F19] text-white pt-24 pb-12 overflow-hidden border-t border-slate-800/50">
+  <footer class="relative bg-none backdrop-blur-[1px] text-white pt-24 pb-12 overflow-hidden shadow-2xl shadow-purple-500">
 
     <!-- Animated Background -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">

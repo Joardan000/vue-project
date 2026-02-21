@@ -61,7 +61,7 @@ const contactInfo = [
 
 const socialLinks = [
   {name: 'Telegram', icon: 'TG', url: '#', color: 'from-blue-400 to-cyan-400'},
-  {name: 'Instagram', icon: 'IG', url: '#', color: 'from-pink-500 to-purple-500'},
+  {name: 'Instagram', icon: 'IG', url: 'https://www.instagram.com/007zzc/', color: 'from-pink-500 to-purple-500'},
   {name: 'LinkedIn', icon: 'IN', url: '#', color: 'from-blue-600 to-indigo-600'},
   {name: 'GitHub', icon: 'GH', url: '#', color: 'from-slate-600 to-slate-800'}
 ]
