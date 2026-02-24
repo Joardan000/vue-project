@@ -1,7 +1,13 @@
 <script setup>
+import Features from "./Features.vue";
+import Portfolio from "./Portfolio.vue";
+import Team from "./Team.vue";
+import Contact from "./Contact.vue";
+
 import {ref, onMounted, onUnmounted} from 'vue'
+
 import Btn from '../components/myBtn.vue'
-import { auth } from "../stores/auth.js";
+import {auth} from "../stores/auth.js";
 
 const signOut = auth()
 
@@ -9,24 +15,26 @@ const isScrolled = ref(false)
 const isVisible = ref(false)
 const isMobileMenuOpen = ref(false)
 
-function scrollToMain(){
+function scrollToMain() {
   window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-function scrollToFeatures(){
-  window.scrollTo({top: 1450, behavior: 'smooth'})
+function scrollToSection(sectionId) {
+  const element = document.querySelector(`#${sectionId}`)
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 }
 
-function scrollToPortfolio(){
-  window.scrollTo({top: 2830, behavior: 'smooth'})
-}
-
-function scrollToTeam(){
-  window.scrollTo({top: 4620, behavior: 'smooth'})
-}
-
-function scrollToContact(){
-  window.scrollTo({top: 5620, behavior: 'smooth'})
+function handleMobileNavClick(id) {
+  toggleMenu() // Avval menuni yoping
+  setTimeout(() => { // Kichik delay bilan scroll qiling
+    if (id === 'main') {
+      scrollToMain()
+    } else {
+      scrollToSection(id)
+    }
+  }, 300) // Menu yopilish animatsiyasi uchun vaqt
 }
 
 const handleScroll = () => {
@@ -53,13 +61,15 @@ const props = defineProps({
   navbar2: String,
   navbar3: String,
   navbar4: String,
+  navbar5: String,
 })
 
 const data = [
-  {navbar: props.navbar1},
-  {navbar: props.navbar2},
-  {navbar: props.navbar3},
-  {navbar: props.navbar4}
+  {navbar: props.navbar1, id: 'main'},
+  {navbar: props.navbar2, id: 'features'},
+  {navbar: props.navbar3, id: 'portfolio'},
+  {navbar: props.navbar4, id: 'team'},
+  {navbar: props.navbar5, id: 'contact'},
 ]
 </script>
 
@@ -98,25 +108,21 @@ const data = [
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center gap-8">
         <a
-            @click="item.navbar === 'Bosh Sahifa' ? scrollToMain(): false; item.navbar === 'Xizmatlar' ? scrollToFeatures() : false ; item.navbar === 'Portfolio'? scrollToPortfolio(): false; item.navbar === 'Jamoa'? scrollToTeam() : false"
+            @click="item.id === 'main' ? scrollToMain() : scrollToSection(item.id)"
             v-for="(item, index) in data"
             :key="index"
             :style="{ transitionDelay: `${index * 100 + 300}ms` }"
-            :class="[
-              'cursor-pointer relative text-sm font-medium text-gray-300 hover:text-white transition-all duration-300 py-2 group',
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            ]"
+            class="cursor-pointer relative text-sm font-medium text-gray-300 hover:text-white transition-all duration-300 py-2 group"
         >
           {{ item.navbar }}
-          <span
-              class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300 group-hover:w-full shadow-[0_0_10px_rgba(139,92,246,0.5)]"></span>
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300 group-hover:w-full"></span>
         </a>
       </nav>
 
       <!-- Desktop Button -->
       <div class="hidden md:block">
         <Btn @click="signOut.signOut()"
-            :class="['transition-all duration-1000 delay-700', isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-75']">
+             :class="['transition-all duration-1000 delay-700', isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-75']">
           Sign Out
         </Btn>
       </div>
@@ -173,8 +179,7 @@ const data = [
           <a
               v-for="(item, index) in data"
               :key="index"
-              href="#"
-              @click="toggleMenu"
+              @click="handleMobileNavClick(item.id)"
               :style="{ transitionDelay: `${index * 50}ms` }"
               :class="[
               'group relative text-2xl font-semibold text-white hover:text-indigo-300 transition-all duration-300 py-3 px-6 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/10',
@@ -190,39 +195,6 @@ const data = [
                 class="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </a>
         </nav>
-
-        <!-- Button -->
-        <div
-            :style="{ transitionDelay: '200ms' }"
-            :class="[
-            'mt-12 w-full transition-all duration-500',
-            isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-          ]"
-        >
-          <Btn @click="toggleMenu" class="w-full">
-            Bog'lanish
-          </Btn>
-        </div>
-
-        <!-- Social Links -->
-        <div
-            :style="{ transitionDelay: '250ms' }"
-            :class="[
-            'mt-12 flex gap-6 transition-all duration-500',
-            isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-          ]"
-        >
-          <a
-              v-for="(social, index) in ['facebook', 'twitter', 'instagram']"
-              :key="index"
-              href="#"
-              class="w-12 h-12 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 hover:border-indigo-400/50 hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] transition-all duration-300"
-          >
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="8"/>
-            </svg>
-          </a>
-        </div>
       </div>
     </div>
   </div>
