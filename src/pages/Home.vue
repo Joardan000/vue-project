@@ -183,7 +183,7 @@ onMounted(() => {
                     class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-3 w-3 bg-indigo-500"></span>
               </span>
-              Ummah - Innovatsiya Markazida
+              JordAn - Innovatsiya Markazida
             </div>
 
             <!-- Main Heading -->
